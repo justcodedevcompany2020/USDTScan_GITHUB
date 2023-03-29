@@ -1,4 +1,4 @@
-import {ActivityIndicator, View } from 'react-native';
+import {ActivityIndicator, SafeAreaView, View } from 'react-native';
 import WrapperHeader from './WrapperHeader'
 import {Gstyals} from '../../Gstyles';
 import { useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ export default Wrapper = ({children, navigation }) => {
   const name = routes[routes.length - 1].name;
   const {searchData} = useSelector((st)=>st)
   return (
-    <View>
+    <SafeAreaView>
         <WrapperHeader name = {name} navigation ={navigation}  />   
         {searchData.loading  ?
             <View style = {{flex:1,justifyContent:'center',alignItems:'center'}}>
@@ -20,7 +20,7 @@ export default Wrapper = ({children, navigation }) => {
           {children}
         </View>
     }
-      </View>
+      </SafeAreaView>
   );
 };
 

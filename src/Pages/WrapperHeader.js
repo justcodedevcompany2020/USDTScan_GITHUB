@@ -1,4 +1,4 @@
-import {View,Image,StyleSheet,TouchableOpacity} from 'react-native';
+import {View,Image,StyleSheet,TouchableOpacity, SafeAreaView} from 'react-native';
 import {useState,  } from 'react';
 import { useDispatch, useSelector, } from 'react-redux'
 import {Button} from '../Components/Buttons/Button';
@@ -11,7 +11,6 @@ import { Swiper } from '../Components/carusels';
 import { StartAction } from '../store/action/startAction';
 import { successGetData } from '../store/action/successAction';
 import { ErrorGetData } from '../store/action/errorAction';
-import { Sw } from '../Components/sw';
 
 export default WrapperHeader = ({name,navigation}) => {
 
@@ -49,7 +48,7 @@ export default WrapperHeader = ({name,navigation}) => {
 
     return (
       <View>
-          <View style={[stayles.header, {backgroundColor: '#e3eee9', height: 60}]}>
+          {/* <View style={[stayles.header, {backgroundColor: '#e3eee9', height: 60}]}>
             {name !== 'Home' &&
               <TouchableOpacity  onPress={()=>{
                 setInpurt('')
@@ -59,10 +58,9 @@ export default WrapperHeader = ({name,navigation}) => {
               </TouchableOpacity>
             }
             <Image style={stayles.logo} source={img} />
-          </View>
+          </View> */}
         <View style={[Gstyals.Home]}>
             <Swiper data={sliderData} />
-            {/* <Sw data = {sliderData}  /> */}
             <View style={{marginTop: 20}}>
               <Input
                 value={input}

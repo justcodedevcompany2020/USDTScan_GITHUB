@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.a"
+    namespace "com.usdtscanexplorer"
     defaultConfig {
-        applicationId "com.a"
+        applicationId "com.usdtscanexplorer"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -117,12 +117,6 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-         release {
-      storeFile file('usdtscan.keystore')
-      storePassword '111111'
-      keyAlias 'usdtscan'
-      keyPassword '111111'
-    }
     }
     buildTypes {
         debug {
@@ -131,7 +125,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
