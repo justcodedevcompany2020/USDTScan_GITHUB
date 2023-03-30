@@ -11,7 +11,7 @@ export default Wrapper = ({children, navigation }) => {
   return (
     <SafeAreaView>
         <WrapperHeader name = {name} navigation ={navigation}  />   
-        {searchData.loading  ?
+        {/* {searchData.loading && name !== "Home" ?
             <View style = {{flex:1,justifyContent:'center',alignItems:'center'}}>
               <ActivityIndicator size="large" color="rgb(222, 180, 30)" />
             </View>
@@ -19,7 +19,7 @@ export default Wrapper = ({children, navigation }) => {
         <View style = {Gstyals.Wrapper}>
           {children}
         </View>
-    }
+    } */}
       </SafeAreaView>
   );
 };
