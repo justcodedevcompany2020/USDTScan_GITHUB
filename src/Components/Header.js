@@ -17,7 +17,7 @@ export const Header = ({onPress}) => {
     <SafeAreaView
       style={[
         stayles.header,
-        {backgroundColor: '#e3eee9', height: windowHeight /10},
+        {backgroundColor: '#e3eee9', height: windowHeight /8.5},
       ]}>
       <TouchableOpacity onPress={onPress} style={Platform.OS ==='ios'? stayles.icon:stayles.androidicone}>
         <Svgs />
@@ -39,15 +39,15 @@ const stayles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: 20,
-    bottom: -windowHeight / 45,
+    bottom: -windowHeight / 70,
     width: 50,
     height: 50,
   },
   androidicone:{
     position: 'absolute',
     left: 20,
-    bottom: -windowHeight / 100,
     width: 50,
     height: 50,
+    justifyContent:'center',
   }
 });

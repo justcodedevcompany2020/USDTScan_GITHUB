@@ -8,7 +8,7 @@ export const HomeHeade = () => {
     <SafeAreaView
       style={[
         stayles.header,
-        {backgroundColor: '#e3eee9', height: windowHeight / 10},
+        {backgroundColor: '#e3eee9', height: windowHeight / 8.5},
       ]}>
       <Image style={stayles.logo} source={img} />
     </SafeAreaView>
