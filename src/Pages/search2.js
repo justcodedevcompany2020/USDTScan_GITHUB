@@ -11,6 +11,7 @@ import {Gstyals} from '../../Gstyles';
 import {Button_orange} from '../Components/Buttons/Button_orange';
 import {SearchTable2} from '../Components/Tables/SearchTable2';
 import {lastData, Next20} from '../store/action/action';
+import Wrapper from './wrapper';
 
 export default Search2 = ({navigation}) => {
   const {searchData} = useSelector(st => st);
@@ -20,7 +21,7 @@ export default Search2 = ({navigation}) => {
     setCount(1);
   }, [searchData.loading]);
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <Wrapper navigation={navigation} />
       {searchData.loading ? (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

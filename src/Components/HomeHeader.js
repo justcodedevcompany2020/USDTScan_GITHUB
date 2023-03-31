@@ -1,4 +1,4 @@
-import {Dimensions, Image, SafeAreaView, StyleSheet, View} from 'react-native';
+import {Dimensions, Image, SafeAreaView, StyleSheet} from 'react-native';
 import img from '../images/logo.png';
 
 export const HomeHeade = () => {
@@ -8,7 +8,7 @@ export const HomeHeade = () => {
     <SafeAreaView
       style={[
         stayles.header,
-        {backgroundColor: '#e3eee9', height: windowHeight / 8.5},
+        {backgroundColor: '#e3eee9', height:Platform.OS ==='ios'? windowHeight /8.5:windowHeight /11},
       ]}>
       <Image style={stayles.logo} source={img} />
     </SafeAreaView>

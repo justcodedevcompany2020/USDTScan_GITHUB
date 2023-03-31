@@ -17,51 +17,12 @@ export default TusWallet = ({navigation}) => {
   const {searchData} = useSelector(st => st);
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
-  const [data, setData] = useState([
-    {
-      text1: 'Affiliate Accruals ',
-      text2: '0.00 USDT ',
-      text4: '(0.000000 TRX)',
-    },
-    {
-      text1: 'Personal Staking ',
-      text2: 'Yes',
-    },
-    {
-      text1: 'Fixed Staking Amount	',
-      text2: '4000.00 USDT',
-    },
-    {
-      text1: 'Flexible Staking Amount ',
-      text3: '0.00 USDT ',
-    },
-  ]);
-  const [data1, setData1] = useState([
-    {
-      text1: 'Transferred to Staking',
-      text2: '4000.00 USDT ',
-    },
-    {
-      text1: 'TRX Transfer Equivalent 	',
-      text2: '60231.892787 TRX ',
-    },
-    {
-      text1: 'Received from Staking',
-      text3: '260.40 USDT ',
-      bold: true,
-    },
-    {
-      text1: 'TRX Income Equivalent ',
-      text3: '3921.096220 TRX ',
-      bold: true,
-    },
-  ]);
 
   useEffect(() => {
     setCount(1);
   }, [searchData.loading]);
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <Wrapper navigation={navigation} />
       {searchData.loading ? (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

@@ -17,7 +17,7 @@ export const Header = ({onPress}) => {
     <SafeAreaView
       style={[
         stayles.header,
-        {backgroundColor: '#e3eee9', height: windowHeight /8.5},
+        {backgroundColor: '#e3eee9', height:Platform.OS ==='ios'? windowHeight /8.5:windowHeight /11},
       ]}>
       <TouchableOpacity onPress={onPress} style={Platform.OS ==='ios'? stayles.icon:stayles.androidicone}>
         <Svgs />

@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {SearchTable3} from '../Components/Tables/SearchTable3';
 import {lastData, Next20} from '../store/action/action';
 import {useEffect, useState} from 'react';
+import Wrapper from './wrapper';
 
 export const Search3 = ({navigation}) => {
   const {searchData} = useSelector(st => st);
@@ -20,7 +21,7 @@ export const Search3 = ({navigation}) => {
     setCount(1);
   }, [searchData.loading]);
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <Wrapper navigation={navigation} />
       {searchData.loading ? (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
