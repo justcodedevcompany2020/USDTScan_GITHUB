@@ -54,8 +54,7 @@ export default Home = ({navigation}) => {
       color: '#f4fdfa',
       title2: 'BTC',
     },
-  ];
-
+  ]
   return (
     <ScrollView  showsVerticalScrollIndicator={false} >
       <Wrapper navigation={navigation} />
