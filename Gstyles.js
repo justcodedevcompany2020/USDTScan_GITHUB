@@ -7,7 +7,6 @@ export const Gstyals = StyleSheet.create({
     },
     Wrapper:{
       paddingHorizontal:20,
-
     },
     Home:{
       padding:20,
@@ -16,10 +15,11 @@ export const Gstyals = StyleSheet.create({
       color: 'rgb(222, 180, 30)',
       fontSize: 14,
       fontWeight:700,
+      // marginVertical:10,
     },
     text: {
       color: '#8587a7',
-      marginVertical: 20,
+      marginVertical: 15,
       fontSize:13
     },
     img:{
@@ -33,5 +33,6 @@ export const Gstyals = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderRadius: 7,
+    marginHorizontal:20,
   },
   })

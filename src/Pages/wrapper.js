@@ -1,26 +1,84 @@
-import {ActivityIndicator, View } from 'react-native';
-import WrapperHeader from './WrapperHeader'
+import {View,StyleSheet, SafeAreaView} from 'react-native';
+import {useState,  } from 'react';
+import { useDispatch, useSelector, } from 'react-redux'
+import {Button} from '../Components/Buttons/Button';
+import {Input} from '../Components/Input/input';
 import {Gstyals} from '../../Gstyles';
-import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { Swiper } from '../Components/carusels';
+import { StartAction } from '../store/action/startAction';
+import { successGetData } from '../store/action/successAction';
+import { ErrorGetData } from '../store/action/errorAction';
 
+export default Wrapper = ({navigation}) => {
 
-export default Wrapper = ({children, navigation }) => {
-  const routes = navigation.getState()?.routes;
-  const name = routes[routes.length - 1].name;
-  const {searchData} = useSelector((st)=>st)
-  return (
-    <View>
-        <WrapperHeader name = {name} navigation ={navigation}  />   
-        {searchData.loading  ?
-            <View style = {{flex:1,justifyContent:'center',alignItems:'center'}}>
-              <ActivityIndicator size="large" color="rgb(222, 180, 30)" />
-            </View>
-        :        
-        <View style = {Gstyals.Wrapper}>
-          {children}
-        </View>
+  const [input, setInpurt] = useState('');
+  const dispatch = useDispatch()
+  const {sliderData} = useSelector((st)=>st.coin)
+
+  const search = () => {
+    if(input !== '' ){
+      dispatch(StartAction())
+      axios.get(`https://usdtscan.com/search_api?scan_wallet=11&scan_addr=${input}`).then((data)=>{
+        if(data.data.success){
+          dispatch(successGetData(data.data.wallet_data,input,data.data?.wallet_bal))
+          if(data.data.wallet_type ==2 ){
+            navigation.navigate('search2');
+          }
+          else if(data.data.wallet_type ==1){
+            console.log(data.data.wallet_type)
+            navigation.navigate('search');
+          }
+          else if(data.data.wallet_type ==3){
+            navigation.navigate('search3');
+          }
+        }
+        else {
+          dispatch(ErrorGetData())
+          navigation.navigate('notFound');
+        }
+      }).catch((error)=>{
+        dispatch(ErrorGetData())
+      })
+      setInpurt('')
     }
-      </View>
-  );
-};
+  };
+
+    return (
+      <SafeAreaView>
+        <View style={[Gstyals.Home]}>
+            <Swiper data={sliderData} />
+            <View style={{marginTop: 20}}>
+              <Input
+                value={input}
+                onChangeText={e => setInpurt(e)}
+                placeholder="Search by Address / USDTChain / TRC20 / ERC20"
+              />
+              <Button onPress={() =>{search() }} title={'Search'} />
+            </View>
+          </View>
+        </SafeAreaView>
+    )
+}
+
+const stayles = StyleSheet.create({
+    logo: {
+      width: 120,
+      height: 30,
+    },
+    header: {
+      flexDirection:'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    icon:{
+      position:'absolute',
+      left:0,
+      width:50,
+      height:50,
+      justifyContent:'center',
+      alignItems:'center',
+    }
+  });
+  
 
