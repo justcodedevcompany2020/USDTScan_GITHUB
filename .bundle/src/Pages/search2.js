@@ -13,7 +13,6 @@ export default Search2 = ({navigation}) => {
   useEffect(()=>{
     setCount(1)
   },[searchData.loading])
-  console.log(searchData.bal)
     return (
       <ScrollView >
         <Wrapper navigation={navigation}>

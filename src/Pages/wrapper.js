@@ -26,7 +26,6 @@ export default Wrapper = ({navigation}) => {
             navigation.navigate('search2');
           }
           else if(data.data.wallet_type ==1){
-            console.log(data.data.wallet_type)
             navigation.navigate('search');
           }
           else if(data.data.wallet_type ==3){

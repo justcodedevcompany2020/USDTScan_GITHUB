@@ -3,3 +3,9 @@ export const ErrorGetData = () => {
         type:'ErrorGetData'
     }
 }
+export const errorAuth = (error) => {
+    return {
+        type:'errorAuth',
+        error
+    }
+}
