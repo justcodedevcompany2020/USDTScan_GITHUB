@@ -16,7 +16,7 @@ export const HomeHeade = ({onPress1}) => {
         {backgroundColor: '#e3eee9', height:Platform.OS ==='ios'? windowHeight /8.5:windowHeight /11},
       ]}>
       <Image style={stayles.logo} source={img} />
-      {!auth.token ?
+      {/* {!auth.token ?
       <View style={Platform.OS ==='ios'? stayles.icon1:stayles.androidicone1}>
         <TouchableOpacity  onPress={onPress1} > 
           <Svgs title='user' />
@@ -27,7 +27,7 @@ export const HomeHeade = ({onPress1}) => {
         <Svgs title='logout' />
       </TouchableOpacity>
     </View>
-    }
+    } */}
     </SafeAreaView>
   );
 };

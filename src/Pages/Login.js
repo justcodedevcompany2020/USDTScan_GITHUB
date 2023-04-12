@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { Gstyals } from "../../Gstyles"
 import { LoginWrapper } from "../Components/LoginWrapper"
-import { LoginAction } from "../store/action/action"
+import { clearError, LoginAction } from "../store/action/action"
 
 export const Login = ({navigation}) => {
     const {auth} = useSelector((st)=>st)
@@ -48,6 +48,7 @@ export const Login = ({navigation}) => {
     }
     const dispatch = useDispatch()
     const validate = () => {
+        dispatch(clearError())
         let temp = [...item]
         temp.map((elm,i)=>{
             if(elm.name === 'personal_wallet_address'){
@@ -96,11 +97,18 @@ export const Login = ({navigation}) => {
         }
     }
     useEffect(()=>{
-        console.log(auth.token)
         if(auth.token){
             navigation.navigate('Home')
         }
     },[auth.token])
+ const navigate = (navigate) =>{
+    let temp = [...item]
+        temp.map((elm,i)=>{
+            elm.error=''
+        })
+        setItem(temp)
+        navigation.navigate(navigate)
+ }
     return (
         <LoginWrapper 
             validate={()=>validate()} 
@@ -112,10 +120,14 @@ export const Login = ({navigation}) => {
             text ={'Please sign in to continue'} 
             ButtonTitle = {'Login'}
             loading = {auth.loading}
+            error = {auth.error}
             >
             <View style = {Gstyals.logintextWrapper}>
-                <Text onPress={()=>navigation.navigate('recovery')} style = {Gstyals.loginText}>Forgot password?</Text>
-                <Text onPress={()=>navigation.navigate('register')} style = {Gstyals.loginText}>Create USDTScan Wallet</Text>
+                <Text onPress={()=>{navigate('recovery')
+                    }
+                    
+                    } style = {Gstyals.loginText}>Forgot password?</Text>
+                <Text onPress={()=>navigate('register')} style = {Gstyals.loginText}>Create USDTScan Wallet</Text>
             </View>
         </LoginWrapper>
     )

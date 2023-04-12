@@ -1,9 +1,8 @@
-import { StyleSheet, TouchableOpacity,Text,View, ActivityIndicator } from "react-native"
+import { StyleSheet, TouchableOpacity,Text} from "react-native"
 
 export const LoginButton = ({title,onPress,loading}) => {
     return <TouchableOpacity activeOpacity={loading} onPress={()=>onPress()} style  = {styles.button}>
         <Text style = {styles.text}>{title}</Text>
-     
     </TouchableOpacity>
 }
 

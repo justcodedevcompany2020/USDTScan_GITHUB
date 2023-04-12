@@ -4,6 +4,7 @@ export const ErrorGetData = () => {
     }
 }
 export const errorAuth = (error) => {
+    console.log('error')
     return {
         type:'errorAuth',
         error

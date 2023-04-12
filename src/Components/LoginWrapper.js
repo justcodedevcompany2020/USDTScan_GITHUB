@@ -11,7 +11,7 @@ import {LoginButton} from './Buttons/LoginButton';
 import {LoginInput} from './Input/loginInput';
 import {LoginHeader} from './LoginHeader';
 
-export const LoginWrapper = ({navigation,children, item, title, text, ButtonTitle,onPress,onChange,validate,msg,loading}) => {
+export const LoginWrapper = ({navigation,error,children, item, title, text, ButtonTitle,onPress,onChange,validate,msg,loading}) => {
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator ={false}>
@@ -40,16 +40,17 @@ export const LoginWrapper = ({navigation,children, item, title, text, ButtonTitl
                 </View>
               ))}
             </View>
-            {!msg?.type ?
+            {msg?.type ?
               <Text style = {{color:'green',textAlign:'center'}}>{msg?.msg}</Text>:
               <Text style = {{color:'red',textAlign:'center'}}>{msg?.msg}</Text>
             }
 
-       {loading && <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <ActivityIndicator size="large" color="rgb(222, 180, 30)" />
-        </View>}
+       <View style={{ justifyContent: 'center', alignItems: 'center'}}>
+         {loading && <ActivityIndicator size="large" color="rgb(222, 180, 30)" style = {{height:20}}/>}
+         {error!=='' && <Text  style={{textAlign:'center',color:'red',}}>{error}</Text>}
+        </View>
             <View style={styles.ButtonContiner}>
-              <LoginButton loading = {loading} onPress ={validate} title={ButtonTitle} />
+              {<LoginButton loading = {loading} onPress ={validate} title={ButtonTitle} />}
             </View>
             {children}
           </View>
@@ -93,6 +94,6 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   ButtonContiner: {
-    marginTop: 50,
+    marginTop: 20,
   },
 });

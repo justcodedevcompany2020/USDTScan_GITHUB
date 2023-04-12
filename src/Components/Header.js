@@ -37,7 +37,7 @@ export const Header = ({onPress,onPress1}) => {
       </View>
       <Image style={stayles.logo} source={img} />
 
-      {auth.token ? 
+      {/* {auth.token ? 
       <View style={Platform.OS ==='ios'? stayles.icon1:stayles.androidicone1}>
         <TouchableOpacity   onPress={onPress1} > 
             <Svgs title='user' />
@@ -47,7 +47,7 @@ export const Header = ({onPress,onPress1}) => {
       <Svgs title='logout' />
     </TouchableOpacity>
 
-      }
+      } */}
     </SafeAreaView>
   );
 };

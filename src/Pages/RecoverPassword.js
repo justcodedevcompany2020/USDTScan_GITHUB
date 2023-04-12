@@ -64,6 +64,7 @@ export const RecoverPassword = ({navigation}) => {
     }
     useEffect(()=>{
         let item = {...msg}
+        console.log(auth,658)
         if(auth.status){
             item.type = true,
             item.msg = auth.msg
@@ -73,7 +74,7 @@ export const RecoverPassword = ({navigation}) => {
             item.msg = auth.msg
         }
         setMsg(item)
-    },[auth.status])
+    },[auth.msg])
     return  (
         <LoginWrapper 
             validate={()=>validate()} 

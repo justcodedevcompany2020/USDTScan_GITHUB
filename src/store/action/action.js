@@ -144,14 +144,14 @@ var requestOptions = {
     fetch("https://usdtscan.com/start_app", requestOptions)
     .then(response => response.json())
     .then(result => {
-        dispatch(SuccessLogin(result))
-        dispatch(saveToken(result.token_auth))
+            dispatch(SuccessLogin(result))
+            dispatch(saveToken(result.token_auth))
+     
     })
-      .catch(error => dispatch(errorAuth(error)));
+      .catch(error => dispatch(errorAuth('wrong login or password')));
 
     } 
 } 
-// 
 export const clearRegisterData = () => {
     return {
         type:'clearRegisterData'
@@ -164,7 +164,6 @@ export const clearRecover = () => {
 }
 
 export function saveToken(token) {
-    console.log(token)
     return async function (dispatch) {
       await AsyncStorage.setItem('token', token);
       dispatch({
@@ -178,7 +177,6 @@ export function saveToken(token) {
   export function checkToken() {
     return async function (dispatch) {
       const token = await AsyncStorage.getItem('token');
-      console.log(token,'p')
       if (token) {
         await dispatch({
           type: 'TOKEN',
@@ -194,7 +192,6 @@ export function saveToken(token) {
   }
 
   export function deleteToken() {
-    console.log('ss')
     return async function (dispatch) {
       await AsyncStorage.removeItem('token');
       dispatch({
@@ -202,4 +199,9 @@ export function saveToken(token) {
         payload: false,
       });
     };
+  }
+  export const clearError = () => {
+    return {
+        type:'clearError'
+    }
   }
