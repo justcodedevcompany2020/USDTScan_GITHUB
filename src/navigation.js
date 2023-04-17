@@ -14,6 +14,7 @@ import Drawers from './Drawer';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkToken } from './store/action/action';
+import { Profile } from './Pages/profili';
 
 
 
@@ -37,7 +38,7 @@ export default Navigation = () => {
           component={home}
           options={{
             header: ({navigation}) => (
-              <HomeHeade  onPress1={() => navigation.navigate('login')}  />
+              <HomeHeade navigation = {navigation}   onPress1={() => navigation.navigate('login')}  />
             ),
           }}
         />
@@ -47,7 +48,7 @@ export default Navigation = () => {
           options={{
             gestureEnabled: false,
             header: ({navigation}) => (
-              <Header onPress1={() => navigation.navigate('login')} onPress={() => navigation.navigate('Home')} />
+              <Header navigation = {navigation} onPress1={() => navigation.navigate('login')} onPress={() => navigation.navigate('Home')} />
             ),
           }}
         />
@@ -100,6 +101,14 @@ export default Navigation = () => {
         <Stack.Screen
           name="register"
           component={Register}
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
           options={{
             headerShown: false,
             gestureEnabled: false,

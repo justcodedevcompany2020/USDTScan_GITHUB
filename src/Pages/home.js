@@ -12,6 +12,7 @@ import Wrapper from './wrapper';
 
 export default Home = ({navigation}) => {
   const {coin_eth, coin_trx, coin_btc} = useSelector(st => st.coin);
+  const {auth} = useSelector(st=>st)
   const dispatch = useDispatch();
   const interval_time = 4000;
   useEffect(() => {
@@ -24,7 +25,12 @@ export default Home = ({navigation}) => {
     return () => clearInterval(interval);
   }, [interval_time]);
   const {searchData} = useSelector(st => st);
-
+  // useEffect(()=>{
+  //   console.log(auth.token)
+  //   if(auth.token){
+  //     navigation.navigate('Profile')
+  //   }
+  // },[])
   const {ethereum, tron, bitcoin} = useSelector(st => st.coin);
   const data = [
     {

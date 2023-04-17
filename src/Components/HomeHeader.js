@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import {Dimensions, Image, SafeAreaView, StyleSheet} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -5,10 +6,16 @@ import img from '../images/logo.png';
 import { deleteToken } from '../store/action/action';
 import { Svgs } from '../Svg/svg';
 
-export const HomeHeade = ({onPress1}) => {
+export const HomeHeade = ({onPress1,navigation}) => {
   const windowHeight = Dimensions.get('window').height;
   const {auth} = useSelector((st)=>st)
   const dispathc = useDispatch()
+  useEffect(()=>{
+    console.log(auth.token)
+    if(auth.token){
+      navigation.navigate('Profile')
+    }
+  },[auth.token])
   return (
     <SafeAreaView
       style={[
@@ -16,7 +23,7 @@ export const HomeHeade = ({onPress1}) => {
         {backgroundColor: '#e3eee9', height:Platform.OS ==='ios'? windowHeight /8.5:windowHeight /11},
       ]}>
       <Image style={stayles.logo} source={img} />
-      {/* {!auth.token ?
+      {!auth.token ?
       <View style={Platform.OS ==='ios'? stayles.icon1:stayles.androidicone1}>
         <TouchableOpacity  onPress={onPress1} > 
           <Svgs title='user' />
@@ -27,7 +34,7 @@ export const HomeHeade = ({onPress1}) => {
         <Svgs title='logout' />
       </TouchableOpacity>
     </View>
-    } */}
+    }
     </SafeAreaView>
   );
 };

@@ -124,21 +124,21 @@ var requestOptions = {
 }
 
 export const LoginAction = (Login,Pass,Phrase,Phrase2) => {
-var myHeaders = new Headers();
-myHeaders.append("Cookie", "PHPSESSID=d190ff2ec39976fb0d12fc1430cbf43c; active=425; lang=en");
-var formdata = new FormData();
-formdata.append("api_access", "100");
-formdata.append("Login", Login);
-formdata.append("Pass", Pass);
-formdata.append("Phrase",Phrase);
-formdata.append("Phrase2", Phrase2);
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "PHPSESSID=d190ff2ec39976fb0d12fc1430cbf43c; active=425; lang=en");
+    var formdata = new FormData();
+    formdata.append("api_access", "100");
+    formdata.append("Login", Login);
+    formdata.append("Pass", Pass);
+    formdata.append("Phrase",Phrase);
+    formdata.append("Phrase2", Phrase2);
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: formdata,
-  redirect: 'follow'
-};
+    var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: formdata,
+    redirect: 'follow'
+    };
     return (dispatch) =>{
     dispatch(startAuth())
     fetch("https://usdtscan.com/start_app", requestOptions)
@@ -146,10 +146,8 @@ var requestOptions = {
     .then(result => {
             dispatch(SuccessLogin(result))
             dispatch(saveToken(result.token_auth))
-     
     })
       .catch(error => dispatch(errorAuth('wrong login or password')));
-
     } 
 } 
 export const clearRegisterData = () => {

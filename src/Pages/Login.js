@@ -98,7 +98,7 @@ export const Login = ({navigation}) => {
     }
     useEffect(()=>{
         if(auth.token){
-            navigation.navigate('Home')
+            navigation.navigate('Profile')
         }
     },[auth.token])
  const navigate = (navigate) =>{
