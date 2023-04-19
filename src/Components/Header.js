@@ -51,9 +51,8 @@ export const Header = ({onPress,onPress1,navigation}) => {
           </TouchableOpacity>
       </View>:
       <TouchableOpacity  onPress={()=>dispathc(deleteToken())} > 
-      <Svgs title='logout' />
-    </TouchableOpacity>
-
+        <Svgs title='logout' />
+      </TouchableOpacity>
       }
     </SafeAreaView>
   );

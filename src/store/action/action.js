@@ -2,6 +2,7 @@ import axios from "axios"
 import { errorAuth } from "./errorAction"
 import { startAuth } from "./startAction"
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Linking } from "react-native"
 import { SuccesGetBitcoin, SuccesGetEthereum, SuccesGetSliderData, SuccesGetTron, successCreateWallet, SuccessLogin, successRecoveryPassword } from "./successAction"
 export default GetSliderData = (data) => {
     return (dispatch) => {
@@ -89,7 +90,13 @@ export const Create_wallet = (api_access,uMail,uPass,Pass2,uPhone) => {
         dispatch(startAuth())
         fetch("https://usdtscan.com/create_wallet", requestOptions)
         .then(response => response.json())
-        .then(result => dispatch(successCreateWallet(result)))
+        .then(result =>{
+            // 
+            if(result.success){
+                dispatch(successCreateWallet(result))
+
+            }
+        })
           .catch(error => dispatch(errorAuth()));
 
 

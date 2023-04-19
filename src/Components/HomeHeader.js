@@ -11,7 +11,6 @@ export const HomeHeade = ({onPress1,navigation}) => {
   const {auth} = useSelector((st)=>st)
   const dispathc = useDispatch()
   useEffect(()=>{
-    console.log(auth.token)
     if(auth.token){
       navigation.navigate('Profile')
     }
