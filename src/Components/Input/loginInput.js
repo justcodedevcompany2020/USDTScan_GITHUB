@@ -8,7 +8,7 @@ export const LoginInput = ({text,placeholder,type,onPress,id,Type,onChange,error
             <Text>{error}</Text>
         </View>}
         <View>
-            <TextInput onChangeText={(e)=>onChange(id,e)} secureTextEntry = {type==='password' || Type === 'password'} style = {styles.input} placeholder = {placeholder}/>
+            <TextInput placeholderTextColor = {'#a5a0ba'} onChangeText={(e)=>onChange(id,e)} secureTextEntry = {type==='password' || Type === 'password'} style = {styles.input} placeholder = {placeholder}/>
             {type === 'password' &&
                 <TouchableOpacity onPress={()=>onPress(id,'text')} style = {styles.eye}>
                     <Svgs title="eye"></Svgs>

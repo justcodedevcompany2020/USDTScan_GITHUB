@@ -14,56 +14,56 @@ import {LoginHeader} from './LoginHeader';
 export const LoginWrapper = ({navigation,error,children, item, title, text, ButtonTitle,onPress,onChange,validate,msg,loading}) => {
   return (
     <SafeAreaView>
-      <ScrollView showsVerticalScrollIndicator ={false}>
         <ImageBackground
+        resizeMode='cover'
           source={require('../images/back.jpg')}
-          style={styles.backgroundImage}>
-          <LoginHeader navigation ={navigation}  />
-          <View style={styles.continer}>
-            <View style={styles.titleContiner}>
-              <Text style={styles.title}>{title}</Text>
-              <Text style={styles.text}>{text}</Text>
-            </View>
-            <View>
-              {item.map((elm, i) => (
-                <View key={i} style={styles.inputContiner}>
-                  <LoginInput
-                    Type = {elm.Type}
-                    error = {elm.error}
-                    onPress = {onPress}
-                    onChange = {onChange}
-                    id = {i}
-                    type = {elm.type}
-                    text={elm.placeholder}
-                    placeholder={elm.placeholder}
-                  />
+          style={styles.backgroundImage} >
+          <ScrollView showsVerticalScrollIndicator ={false}>
+              <LoginHeader navigation ={navigation}  />
+              <View style={styles.continer}>
+                <View style={styles.titleContiner}>
+                  <Text style={styles.title}>{title}</Text>
+                  <Text style={styles.text}>{text}</Text>
                 </View>
-              ))}
-            </View>
-            {msg?.type ?
-              <Text style = {{color:'green',textAlign:'center'}}>{msg?.msg}</Text>:
-              <Text style = {{color:'red',textAlign:'center'}}>{msg?.msg}</Text>
-            }
+                <View>
+                  {item.map((elm, i) => (
+                    <View key={i} style={styles.inputContiner}>
+                      <LoginInput
+                        Type = {elm.Type}
+                        error = {elm.error}
+                        onPress = {onPress}
+                        onChange = {onChange}
+                        id = {i}
+                        type = {elm.type}
+                        text={elm.placeholder}
+                        placeholder={elm.placeholder}
+                      />
+                    </View>
+                  ))}
+                </View>
+                {msg?.type ?
+                  <Text style = {{color:'green',textAlign:'center'}}>{msg?.msg}</Text>:
+                  <Text style = {{color:'red',textAlign:'center'}}>{msg?.msg}</Text>
+                }
 
-       <View style={{ justifyContent: 'center', alignItems: 'center'}}>
-         {loading && <ActivityIndicator size="large" color="rgb(222, 180, 30)" style = {{height:20}}/>}
-         {error!=='' && <Text  style={{textAlign:'center',color:'red',}}>{error}</Text>}
-        </View>
-            <View style={styles.ButtonContiner}>
-              {<LoginButton loading = {loading} onPress ={validate} title={ButtonTitle} />}
+          <View style={{ justifyContent: 'center', alignItems: 'center'}}>
+            {loading && <ActivityIndicator size="large" color="rgb(222, 180, 30)" style = {{height:20}}/>}
+            {error!=='' && <Text  style={{textAlign:'center',color:'red',}}>{error}</Text>}
             </View>
-            {children}
-          </View>
-        </ImageBackground>
-      </ScrollView>
+                <View style={styles.ButtonContiner}>
+                  {<LoginButton loading = {loading} onPress ={validate} title={ButtonTitle} />}
+                </View>
+                {children}
+              </View>
+          </ScrollView>
+          </ImageBackground>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    height: '100%',
-    resizeMode: 'cover',
+    height:'100%'
   },
   continer: {
     marginHorizontal: 20,
