@@ -50,9 +50,11 @@ export const Header = ({onPress,onPress1,navigation}) => {
             <Svgs title='user' />
           </TouchableOpacity>
       </View>:
-      <TouchableOpacity  onPress={()=>dispathc(deleteToken())} > 
-        <Svgs title='logout' />
-      </TouchableOpacity>
+        <View style={Platform.OS ==='ios'? stayles.icon1:stayles.androidicone1}>
+        <TouchableOpacity  onPress={()=>dispathc(deleteToken())} > 
+          <Svgs title='logout' />
+        </TouchableOpacity>
+      </View>
       }
     </SafeAreaView>
   );
