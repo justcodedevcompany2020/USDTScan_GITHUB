@@ -43,6 +43,10 @@ const initialState = {
             break
         case 'clearError':
             item.error = false
+            break
+        case 'clearAuth':
+            data = {}
+            break
         default:
             break
     }

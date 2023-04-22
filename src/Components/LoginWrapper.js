@@ -5,7 +5,8 @@ import {
   Text,
   View,
   ScrollView,
-  ActivityIndicator
+  ActivityIndicator,
+  KeyboardAvoidingView
 } from 'react-native';
 import {LoginButton} from './Buttons/LoginButton';
 import {LoginInput} from './Input/loginInput';
@@ -13,11 +14,11 @@ import {LoginHeader} from './LoginHeader';
 
 export const LoginWrapper = ({navigation,error,children, item, title, text, ButtonTitle,onPress,onChange,validate,msg,loading}) => {
   return (
-    <SafeAreaView>
         <ImageBackground
-        resizeMode='cover'
+          resizeMode='cover'
           source={require('../images/back.jpg')}
           style={styles.backgroundImage} >
+          <SafeAreaView >
           <ScrollView showsVerticalScrollIndicator ={false}>
               <LoginHeader navigation ={navigation}  />
               <View style={styles.continer}>
@@ -56,8 +57,10 @@ export const LoginWrapper = ({navigation,error,children, item, title, text, Butt
                 {children}
               </View>
           </ScrollView>
+            
+          </SafeAreaView>
           </ImageBackground>
-    </SafeAreaView>
+        
   );
 };
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { StyleSheet, Text, View } from "react-native"
+import { KeyboardAvoidingView, StyleSheet, Text, View } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { Gstyals } from "../../Gstyles"
 import { LoginWrapper } from "../Components/LoginWrapper"
@@ -97,6 +97,7 @@ export const Login = ({navigation}) => {
         }
     }
     useEffect(()=>{
+        dispatch(clearError())
         if(auth.token){
             navigation.navigate('Profile')
         }
@@ -110,6 +111,7 @@ export const Login = ({navigation}) => {
         navigation.navigate(navigate)
  }
     return (
+      <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'height'}> 
         <LoginWrapper 
             validate={()=>validate()} 
             onChange = {(i,value)=>handleChange(i,value)} 
@@ -130,6 +132,8 @@ export const Login = ({navigation}) => {
                 <Text onPress={()=>navigate('register')} style = {Gstyals.loginText}>Create USDTScan Wallet</Text>
             </View>
         </LoginWrapper>
+      </KeyboardAvoidingView> 
+
     )
 }
 

