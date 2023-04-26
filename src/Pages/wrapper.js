@@ -19,14 +19,13 @@ export default Wrapper = ({navigation}) => {
   const search = () => {
     if(input !== '' ){
       dispatch(StartAction())
-      axios.get(`https://usdtscan.com/search_api?scan_wallet=11&scan_addr=${input}`).then((data)=>{
+      axios.post(`https://usdtscan.com/search_api?scan_wallet=11&scan_addr=${input}`).then((data)=>{
         if(data.data.success){
           dispatch(successGetData(data.data.wallet_data,input,data.data?.wallet_bal))
           if(data.data.wallet_type ==2 ){
             navigation.navigate('search2');
           }
           else if(data.data.wallet_type ==1){
-            console.log(data.data.wallet_type)
             navigation.navigate('search');
           }
           else if(data.data.wallet_type ==3){

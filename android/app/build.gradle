@@ -95,11 +95,11 @@ android {
 
     namespace "com.usdtscanexplorer"
     defaultConfig {
-        applicationId "com.usdtscanexplorer"
+        applicationId "com.justcode.usdtscanexplorer"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.2"
     }
 
     splits {

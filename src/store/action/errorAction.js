@@ -3,3 +3,10 @@ export const ErrorGetData = () => {
         type:'ErrorGetData'
     }
 }
+export const errorAuth = (error) => {
+    console.log('error')
+    return {
+        type:'errorAuth',
+        error
+    }
+}

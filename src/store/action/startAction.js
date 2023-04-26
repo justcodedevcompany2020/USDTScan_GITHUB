@@ -3,3 +3,9 @@ export const StartAction = () =>{
         type:'StartAction'
     }
 }
+
+export const startAuth = () =>{
+    return {
+        type:'startAuth'
+    }
+}

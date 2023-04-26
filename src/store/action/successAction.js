@@ -33,3 +33,24 @@ export const successGetData = (data,input,bal) =>{
         bal,
     }
 }
+
+export const successCreateWallet = (data) => {
+    return {
+        type:'successCreateWallet',
+        data
+    }
+}
+
+export const successRecoveryPassword = (data) => {
+    return {
+        type:'successRecoveryPassword',
+        data
+    }
+}
+
+export const SuccessLogin = (data) =>{
+    return {
+        type:'SuccessLogin',
+        data,
+    }
+}

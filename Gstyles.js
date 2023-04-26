@@ -35,4 +35,12 @@ export const Gstyals = StyleSheet.create({
     borderRadius: 7,
     marginHorizontal:20,
   },
+  loginText:{
+    color:'#4f9079',
+    fontWeight:700,
+    marginVertical:5,
+},
+logintextWrapper:{
+    marginTop:20,
+}
   })

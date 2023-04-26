@@ -18,7 +18,7 @@ export const SearchTable3 = ({data,value}) =>{
     const dispatch = useDispatch()
     const search = (data,input) => {
       dispatch(StartAction())
-      axios.get(`https://usdtscan.com/search_api?scan_wallet=11&scan_addr=${data}`).then((data)=>{
+      axios.post(`https://usdtscan.com/search_api?scan_wallet=11&scan_addr=${data}`).then((data)=>{
         if(data.data.success){
           dispatch(successGetData(data.data.wallet_data,input,data.data?.wallet_bal))
           if(data.data.wallet_type ==2 ){
