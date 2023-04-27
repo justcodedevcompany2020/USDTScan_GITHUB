@@ -131,7 +131,6 @@ var requestOptions = {
 }
 
 export const LoginAction = (Login,Pass,Phrase,Phrase2) => {
-    console.log(Login,Pass,Phrase,Phrase2)
     var myHeaders = new Headers();
     myHeaders.append("Cookie", "PHPSESSID=d190ff2ec39976fb0d12fc1430cbf43c; active=425; lang=en");
     var formdata = new FormData();
@@ -152,7 +151,6 @@ export const LoginAction = (Login,Pass,Phrase,Phrase2) => {
     fetch("https://usdtscan.com/start_app", requestOptions)
     .then(response => response.json())
     .then(result => {
-            console.log(result)
             dispatch(SuccessLogin(result))
             dispatch(saveToken(result.token_auth))
     })

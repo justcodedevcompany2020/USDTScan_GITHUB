@@ -64,7 +64,6 @@ export const RecoverPassword = ({navigation}) => {
     }
     useEffect(()=>{
         let item = {...msg}
-        console.log(auth,658)
         if(auth.status){
             item.type = true,
             item.msg = auth.msg

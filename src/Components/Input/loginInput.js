@@ -8,7 +8,13 @@ export const LoginInput = ({text,placeholder,type,onPress,id,Type,onChange,error
             <Text>{error}</Text>
         </View>}
         <View>
-            <TextInput placeholderTextColor = {'#a5a0ba'} onChangeText={(e)=>onChange(id,e)} secureTextEntry = {type==='password' || Type === 'password'} style = {styles.input} placeholder = {placeholder}/>
+            <TextInput 
+                placeholderTextColor = {'#a5a0ba'} 
+                onChangeText={(e)=>onChange(id,e)} 
+                secureTextEntry = {type==='password' || Type === 'password'}
+                style = {[styles.input,type === 'password' &&{paddingRight:50}]} 
+                placeholder = {placeholder}
+                />
             {type === 'password' &&
                 <TouchableOpacity onPress={()=>onPress(id,'text')} style = {styles.eye}>
                     <Svgs title="eye"></Svgs>
@@ -32,8 +38,8 @@ const styles = StyleSheet.create({
         height:40,
         borderColor:'#e3e3e3',
         borderRadius:3,
-        paddingHorizontal:15,
-        paddingRight:50,
+        paddingHorizontal:8,
+        // paddingLeft:5,
         position:'relative',
         color:'#000'
     },

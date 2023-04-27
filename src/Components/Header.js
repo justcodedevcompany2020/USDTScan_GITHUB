@@ -22,7 +22,6 @@ export const Header = ({onPress,onPress1,navigation}) => {
   const {auth} = useSelector((st)=>st)
   const dispatch = useDispatch()
   useEffect(()=>{
-    console.log(auth.token)
     if(auth.token){
       navigation.navigate('Profile')
     }

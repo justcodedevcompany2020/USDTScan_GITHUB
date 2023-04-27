@@ -20,7 +20,6 @@ import { Profile } from './Pages/profili';
 
 export default Navigation = () => {
   const Stack = createNativeStackNavigator();
-  // const Drawer = createDrawerNavigator();
   const {auth} = useSelector((st)=>st)
   dispatch = useDispatch()
   useEffect(()=>{

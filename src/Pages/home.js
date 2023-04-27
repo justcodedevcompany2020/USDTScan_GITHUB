@@ -25,12 +25,6 @@ export default Home = ({navigation}) => {
     return () => clearInterval(interval);
   }, [interval_time]);
   const {searchData} = useSelector(st => st);
-  // useEffect(()=>{
-  //   console.log(auth.token)
-  //   if(auth.token){
-  //     navigation.navigate('Profile')
-  //   }
-  // },[])
   const {ethereum, tron, bitcoin} = useSelector(st => st.coin);
   const data = [
     {
