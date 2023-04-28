@@ -34,10 +34,11 @@ export const successGetData = (data,input,bal) =>{
     }
 }
 
-export const successCreateWallet = (data) => {
+export const successCreateWallet = (data,token) => {
     return {
         type:'successCreateWallet',
-        data
+        data,
+        token
     }
 }
 

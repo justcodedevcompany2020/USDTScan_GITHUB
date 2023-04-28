@@ -14,6 +14,7 @@ const initialState = {
       case 'successCreateWallet':
         item.loading = false
         item.data = action.data
+        item.token = action.token
         break;
         case 'startAuth':
             item.loading = true

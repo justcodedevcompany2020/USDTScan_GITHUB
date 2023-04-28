@@ -13,7 +13,7 @@ import {Register} from './Pages/Register';
 import Drawers from './Drawer';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkToken } from './store/action/action';
+import { checkToken  } from './store/action/action';
 import { Profile } from './Pages/profili';
 
 
