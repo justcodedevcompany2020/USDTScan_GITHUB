@@ -90,16 +90,11 @@ export const Create_wallet = (api_access,uMail,uPass,Pass2,uPhone) => {
         fetch("https://usdtscan.com/create_wallet", requestOptions)
         .then(response => response.json())
         .then(result =>{
-            // 
             if(result.success){
-                console.log(result,888)
-                dispatch(successCreateWallet(result))
-
+                dispatch(successCreateWallet(result,'934b0dfca37be1f434bcd1e8ce2cf4b6'))
             }
         })
           .catch(error => dispatch(errorAuth()));
-
-
     }  
 }   
 
