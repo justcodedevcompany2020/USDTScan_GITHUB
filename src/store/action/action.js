@@ -91,7 +91,8 @@ export const Create_wallet = (api_access,uMail,uPass,Pass2,uPhone) => {
         .then(response => response.json())
         .then(result =>{
             if(result.success){
-                dispatch(successCreateWallet(result,'934b0dfca37be1f434bcd1e8ce2cf4b6'))
+                dispatch(saveToken(result.token_auth))
+                dispatch(successCreateWallet(result,result.token_auth))
             }
         })
           .catch(error => dispatch(errorAuth()));
