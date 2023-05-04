@@ -9,6 +9,7 @@ export const Profile = ({navigation}) =>{
     useEffect (()=>{
       setHeight(getStatusBarHeight(true))
     },[])
+  
     let webviewRef = useRef(null)
     return <WebView
     ref = {webviewRef}
@@ -21,6 +22,7 @@ export const Profile = ({navigation}) =>{
       data:' app_access_val=121',
       success: function(ex) {
       }})`}
+    // onError={(error)=>console.log(error)}
       onNavigationStateChange={(webViewState)=>{
         let logour_url = 'https://usdtscan.com/logout_app';
         console.log(webViewState)
