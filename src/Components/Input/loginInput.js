@@ -1,7 +1,7 @@
 import { StyleSheet, View,TextInput,Text, TouchableOpacity } from "react-native"
 import { Svgs } from "../../Svg/svg"
 
-export const LoginInput = ({text,placeholder,type,onPress,id,Type,onChange,error}) => {
+export const LoginInput = ({text,placeholder,type,onPress,id,Type,onChange,error,value}) => {
     return <View style = {[styles.LoginInput,error &&{marginBottom:15}]}>
         <Text style= {styles.text}>{text}</Text>
         {error &&<View style = {styles.error}>
@@ -9,6 +9,7 @@ export const LoginInput = ({text,placeholder,type,onPress,id,Type,onChange,error
         </View>}
         <View>
             <TextInput 
+                value={value}
                 placeholderTextColor = {'#a5a0ba'} 
                 onChangeText={(e)=>onChange(id,e)} 
                 secureTextEntry = {type==='password' || Type === 'password'}

@@ -10,6 +10,11 @@ export const Register = ({navigation}) => {
     const dispatch = useDispatch()
     const [popUp,setPopUp] = useState(false)
     const {auth} = useSelector((st)=>st)
+    const handelClikc = (i,type)=>{
+        let temp = [...item]
+        temp[i].type = type
+        setItem(temp)
+    }
     const [item,setItem] = useState([
         {
             name:'email',
@@ -120,17 +125,17 @@ export const Register = ({navigation}) => {
     useEffect(()=>{
         dispatch(clearAuth())
     },[])
-    useEffect(()=>{
-        if(auth?.data?.success){
+    // useEffect(()=>{
+    //     if(auth?.data?.success){
             
-            // setPopUp(true)
-            // dispatch(saveToken(result.token_auth))
-            // Linking.openURL(`https://usdtscan.com/download_keys?walet=${auth.data.Wallet}&phrase1=${auth.data.recovery_word}&phrase2=${auth.data.recovery_word2}`)
-        }
-        else {
-            setPopUp(false)
-        }
-    },[auth?.data?.success])
+    //         // setPopUp(true)
+    //         // dispatch(saveToken(result.token_auth))
+    //         // Linking.openURL(`https://usdtscan.com/download_keys?walet=${auth.data.Wallet}&phrase1=${auth.data.recovery_word}&phrase2=${auth.data.recovery_word2}`)
+    //     }
+    //     else {
+    //         setPopUp(false)
+    //     }
+    // },[auth?.data?.success])
      return <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}> 
     <LoginWrapper 
                 validate = {()=>Validate()}  
@@ -141,6 +146,7 @@ export const Register = ({navigation}) => {
                 title = {'Welcome to USDTSCAN!'} 
                 text ={'Create Personal USDTSCAN Wallet'}
                 loading = {auth.loading}
+                onPress={(id,type)=>handelClikc(id,type)}
             >
                 <Modal visible = {popUp} transparent = {true}>
                     <Modals 

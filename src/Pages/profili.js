@@ -9,8 +9,15 @@ export const Profile = ({navigation}) =>{
     useEffect (()=>{
       setHeight(getStatusBarHeight(true))
     },[])
-  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        console.log('ppp')
+        webviewRef.current.reload()
+      }, 5700);
+      return () => clearTimeout(timer);
+    }, []);
     let webviewRef = useRef(null)
+
     return <WebView
     ref = {webviewRef}
     style = {{marginTop:height}}
@@ -22,7 +29,7 @@ export const Profile = ({navigation}) =>{
       data:' app_access_val=121',
       success: function(ex) {
       }})`}
-    // onError={(error)=>console.log(error)}
+      onMessage={(event)=>{console.log(event)}} 
       onNavigationStateChange={(webViewState)=>{
         let logour_url = 'https://usdtscan.com/logout_app';
         console.log(webViewState)

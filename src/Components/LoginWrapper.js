@@ -30,6 +30,7 @@ export const LoginWrapper = ({navigation,error,children, item, title, text, Butt
                   {item.map((elm, i) => (
                     <View key={i} style={styles.inputContiner}>
                       <LoginInput
+                        value = {elm.value}
                         Type = {elm.Type}
                         error = {elm.error}
                         onPress = {onPress}
